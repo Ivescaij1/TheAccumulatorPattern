@@ -254,6 +254,36 @@ def run_test_count_cosines_from():
     # Below this comment, add 5 more test cases of your own choosing.
     # ------------------------------------------------------------------
 
+    # Test 2:
+    expected = 2
+    answer = count_cosines_from(0, 1, 0.1)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 1
+    answer = count_cosines_from(7, 7, 0.7)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 4:
+    expected = 4
+    answer = count_cosines_from(10, 20, 0.5)
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 5:
+    expected = 7
+    answer = count_cosines_from(30, 45, 0.3)
+    print('Test 5 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 6:
+    expected = 9
+    answer = count_cosines_from(30, 60, 0.6)
+    print('Test 6 expected:', expected)
+    print('       actual:  ', answer)
+
 
 def count_cosines_from(m, n, x):
     """
@@ -275,13 +305,20 @@ def count_cosines_from(m, n, x):
       -- count_cosines_from(4, 8, -0.5)  returns  4
     """
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
+
+    count = 0
+    for k in range(n+1):
+        if k >= m and math.cos(k) > x:
+            count = count + 1
+
+    return count
 
 
 def run_test_sum_unit_fractions_from():
