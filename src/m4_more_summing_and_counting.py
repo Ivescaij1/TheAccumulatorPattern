@@ -124,6 +124,7 @@ def sum_from(m, n):
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
+
     total = 0
     for k in range(n + 1):
         if k >= m:
@@ -146,9 +147,9 @@ def run_test_factorial():
     ####################################################################
     # ------------------------------------------------------------------
     print()
-    print('--------------------------------------------------')
+    print('-----------------------------------')
     print('Testing the   factorial   function:')
-    print('--------------------------------------------------')
+    print('-----------------------------------')
 
     # Test 1:
     answer_from_oracle = math.factorial(0)
@@ -168,6 +169,24 @@ def run_test_factorial():
     #   ** uses  math.factorial  as an ORACLE for testing. **
     # ------------------------------------------------------------------
 
+    # Test 3:
+    answer_from_oracle = math.factorial(5)
+    answer_from_my_code = factorial(5)
+    print('Test 3 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 4:
+    answer_from_oracle = math.factorial(10)
+    answer_from_my_code = factorial(10)
+    print('Test 4 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 5:
+    answer_from_oracle = math.factorial(49)
+    answer_from_my_code = factorial(49)
+    print('Test 5 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
 
 def factorial(n):
     """
@@ -179,12 +198,18 @@ def factorial(n):
         factorial(0) returns 1 (by definition).
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT:  Your solution MUST
     #   use an explicit    for ... in range(...):     statement.
     # ------------------------------------------------------------------
+
+    product = 1
+    for k in range(n):
+        product = product * (k + 1)
+
+    return product
 
 
 def run_test_count_cosines_from():
