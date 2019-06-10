@@ -70,14 +70,14 @@ def run_test_sum_more_cosines():
     # ------------------------------------------------------------------
 
     # Test 2:
-    expected = 1.54144
-    answer = sum_more_cosines(0, 45)
+    expected = 0.02082
+    answer = sum_more_cosines(-4, 1)
     print('Test 2 expected:', expected, '(approximately)')
     print('       actual:  ', answer)
 
     # Test 3:
-    expected = 0.22623
-    answer = sum_more_cosines(30, 60)
+    expected = 0.12415
+    answer = sum_more_cosines(-2, -1)
     print('Test 3 expected:', expected, '(approximately)')
     print('       actual:  ', answer)
 
@@ -110,8 +110,8 @@ def sum_more_cosines(m, n):
     # ------------------------------------------------------------------
 
     total = 0
-    for k in range(m-1, n):
-        total = total + (math.cos(k + 1))
+    for k in range(n - m + 1):
+        total = total + (math.cos(k + m))
 
     return total
 
@@ -119,7 +119,7 @@ def sum_more_cosines(m, n):
 def run_test_count_sines_from():
     """ Tests the   count_sines_from   function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  count_sines_from  function defined below.
     #   Include at least **   6   ** tests (we wrote one for you).
     #              ** Yes, 6 (six) tests. **
@@ -127,9 +127,9 @@ def run_test_count_sines_from():
     # Use the same 4-step process as for previous TEST functions.
     # ------------------------------------------------------------------
     print()
-    print('--------------------------------------------------')
+    print('------------------------------------------')
     print('Testing the   count_sines_from   function:')
-    print('--------------------------------------------------')
+    print('------------------------------------------')
 
     # Test 1:
     expected = 5
@@ -141,6 +141,30 @@ def run_test_count_sines_from():
     # TO DO: 4 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
     # ------------------------------------------------------------------
+
+    # Test 2:
+    expected = 5
+    answer = count_sines_from(4, 6)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 3
+    answer = count_sines_from(3, 9)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 4:
+    expected = 0
+    answer = count_sines_from(7, 7)
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 5:
+    expected = 1
+    answer = count_sines_from(9, 9)
+    print('Test 5 expected:', expected)
+    print('       actual:  ', answer)
 
 
 def count_sines_from(m, n):
