@@ -112,6 +112,7 @@ def sum_more_cosines(m, n):
     total = 0
     for k in range(n - m + 1):
         total = total + (math.cos(k + m))
+        # print(k + m, math.cos(k+m))  # Uncomment to check perimeter and cos
 
     return total
 
@@ -143,27 +144,33 @@ def run_test_count_sines_from():
     # ------------------------------------------------------------------
 
     # Test 2:
-    expected = 5
+    expected = 3
     answer = count_sines_from(4, 6)
     print('Test 2 expected:', expected)
     print('       actual:  ', answer)
 
     # Test 3:
-    expected = 3
-    answer = count_sines_from(3, 9)
+    expected = 0
+    answer = count_sines_from(7, 7)
     print('Test 3 expected:', expected)
     print('       actual:  ', answer)
 
     # Test 4:
-    expected = 0
-    answer = count_sines_from(7, 7)
+    expected = 1
+    answer = count_sines_from(9, 9)
     print('Test 4 expected:', expected)
     print('       actual:  ', answer)
 
     # Test 5:
-    expected = 1
-    answer = count_sines_from(9, 9)
+    expected = 3
+    answer = count_sines_from(5, 9)
     print('Test 5 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 6:
+    expected = 11
+    answer = count_sines_from(15, 30)
+    print('Test 6 expected:', expected)
     print('       actual:  ', answer)
 
 
@@ -187,13 +194,21 @@ def count_sines_from(m, n):
       -- count_sines_from(9, 9)  returns  1
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
+
+    count = 0
+    for k in range(n - m + 1):
+        # print(k+m, math.sin(k + m)) # uncomment to check the detail k and sin(k)
+        if math.sin(k + m) < 0.5:
+            count = count + 1
+
+    return count
 
 
 def run_test_count_sines_vs_cosines():
