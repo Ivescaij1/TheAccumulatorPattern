@@ -35,10 +35,10 @@ def main():
 def run_test_draw_squares_from_circle():
     """ Tests the   draw_squares_from_circle  function. """
     print()
-    print('--------------------------------------------------')
+    print('------------------------------------------------')
     print('Testing the  draw_squares_from_circle  function:')
     print('  See the graphics windows that pop up.')
-    print('--------------------------------------------------')
+    print('------------------------------------------------')
 
     # ------------------------------------------------------------------
     # TWO tests on ONE window.
@@ -135,10 +135,10 @@ def draw_squares_from_circle(n, circle, window):
 def run_test_draw_circles_from_rectangle():
     """ Tests the   draw_circles_from_rectangle  function. """
     print()
-    print('--------------------------------------------------')
+    print('---------------------------------------------------')
     print('Testing the  draw_circles_from_rectangle  function:')
     print('  See the graphics windows that pop up.')
-    print('--------------------------------------------------')
+    print('---------------------------------------------------')
 
     # ------------------------------------------------------------------
     # TODO: 3. Implement this TEST function.
