@@ -144,7 +144,7 @@ def run_test_draw_circles_from_rectangle():
     print('---------------------------------------------------')
 
     # ------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # DONE: 3. Implement this TEST function.
     #   It TESTS the  draw_circles_from_rectangle  function
     #   defined below.  Include at least **   3   ** tests, of which
     #      ***  at least TWO tests are on ONE window and
@@ -164,10 +164,14 @@ def run_test_draw_circles_from_rectangle():
 
     # Test 1:
     rectangle = rg.Rectangle(rg.Point(600, 400), rg.Point(500, 450))
+    rectangle.fill_color = 'green'
+    rectangle.outline_color = 'black'
     draw_circles_from_rectangle(8, 3, rectangle, window1)
 
     # Test 2:
     rectangle = rg.Rectangle(rg.Point(400, 250), rg.Point(440, 325))
+    rectangle.fill_color = 'blue'
+    rectangle.outline_color = 'red'
     draw_circles_from_rectangle(4, 5, rectangle, window1)
 
     window1.close_on_mouse_click()
@@ -178,6 +182,8 @@ def run_test_draw_circles_from_rectangle():
 
     # Test 3:
     rectangle = rg.Rectangle(rg.Point(375, 330), rg.Point(350, 280))
+    rectangle.fill_color = 'yellow'
+    rectangle.outline_color = 'brown'
     draw_circles_from_rectangle(6, 10, rectangle, window2)
 
     window2.close_on_mouse_click()
@@ -223,7 +229,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -237,36 +243,42 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     ####################################################################
     # ------------------------------------------------------------------
 
+    # withdraw local variables from shape rectangle
     rectangle.attach_to(window)
     p1 = rectangle.get_upper_left_corner()
     p2 = rectangle.get_lower_right_corner()
-
     height = p2.y - p1.y
     width = p2.x - p1.x
+    fill = rectangle.fill_color
+    outline = rectangle.outline_color
 
+    # Draw circles in row with For Loop
     row_radius = height / 2
-    column_radius = width / 2
-
     row_x = p1.x - row_radius
     row_y = p1.y + row_radius
 
     for _ in range(m):
         row_circle_center = rg.Point(row_x, row_y)
         row_circle = rg.Circle(row_circle_center, row_radius)
+        row_circle.fill_color = fill
 
         row_circle.attach_to(window)
 
         row_x = row_x - row_radius * 2
 
-    # for _ in range(n):
-    #     square_center = rg.Point(x, y)
-    #     square_side = 2 * radius
-    #     square = rg.Square(square_center, square_side)
-    #
-    #     square.attach_to(window)
-    #
-    #     x = x + radius
-    #     y = y + radius
+    # Draw circles in column with For Loop
+    column_radius = width / 2
+    column_x = p1.x + column_radius
+    column_y = p2.y - column_radius - height
+
+    for _ in range(n):
+        column_circle_center = rg.Point(column_x, column_y)
+        column_circle = rg.Circle(column_circle_center, column_radius)
+        column_circle.outline_color = outline
+
+        column_circle.attach_to(window)
+
+        column_y = column_y - column_radius * 2
 
     window.render()
 
