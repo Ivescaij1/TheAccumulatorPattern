@@ -126,6 +126,9 @@ def draw_squares_from_circle(n, circle, window):
 
         square.attach_to(window)
 
+        # print('square center:', square_center,
+        #       'square side:', square_side)
+
         x = x + radius
         y = y + radius
 
@@ -233,6 +236,39 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    rectangle.attach_to(window)
+    p1 = rectangle.get_upper_left_corner()
+    p2 = rectangle.get_lower_right_corner()
+
+    height = p2.y - p1.y
+    width = p2.x - p1.x
+
+    row_radius = height / 2
+    column_radius = width / 2
+
+    row_x = p1.x - row_radius
+    row_y = p1.y + row_radius
+
+    for _ in range(m):
+        row_circle_center = rg.Point(row_x, row_y)
+        row_circle = rg.Circle(row_circle_center, row_radius)
+
+        row_circle.attach_to(window)
+
+        row_x = row_x - row_radius * 2
+
+    # for _ in range(n):
+    #     square_center = rg.Point(x, y)
+    #     square_side = 2 * radius
+    #     square = rg.Square(square_center, square_side)
+    #
+    #     square.attach_to(window)
+    #
+    #     x = x + radius
+    #     y = y + radius
+
+    window.render()
 
 
 def run_test_draw_lines_from_rectangles():
