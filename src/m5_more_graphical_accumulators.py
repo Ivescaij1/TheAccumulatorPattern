@@ -247,8 +247,8 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     rectangle.attach_to(window)
     p1 = rectangle.get_upper_left_corner()
     p2 = rectangle.get_lower_right_corner()
-    height = p2.y - p1.y
-    width = p2.x - p1.x
+    height = rectangle.get_height()
+    width = rectangle.get_width()
     fill = rectangle.fill_color
     outline = rectangle.outline_color
 
@@ -373,6 +373,47 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    # withdraw local variables from shape rectangle
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+    p1 = rectangle1.get_center()
+    p2 = rectangle2.get_center()
+    p3 = rectangle1.get_lower_left_corner()
+    color1 = rectangle1.outline_color
+    color2 = rectangle2.outline_color
+
+    # define Point xy and change in x & y
+    x1 = p1.x
+    y1 = p1.y
+    x2 = p2.x
+    y2 = p2.y
+    dx = p3.x - p1.x
+    dy = p3.y - p1.y
+
+    # Draw lines with for loop
+    loop = 0
+    for _ in range(n):
+        start = rg.Point(x1, y1)
+        end = rg.Point(x2, y2)
+        line = rg.Line(start, end)
+        line.thickness = 5
+
+        if loop == 0:                   # Count for line color by if
+            loop = loop + 1
+            line.color = color1
+        else:
+            loop = loop - 1
+            line.color = color2
+
+        x1 = x1 + dx
+        x2 = x2 + dx
+        y1 = y1 + dy
+        y2 = y2 + dy
+
+        line.attach_to(window)
+
+    window.render()
 
 
 # ----------------------------------------------------------------------
